@@ -87,11 +87,11 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex min-h-screen">
-      <div className="w-1/3 bg-blue-900 p-10 text-white flex flex-col justify-center">
-        <img className="w-40 h-20 mb-1" src={logo} />
+    <div className="md:flex min-h-screen">
+      <div className="w-full md:w-1/3 bg-blue-900 p-10 text-white flex flex-col justify-center">
+        <img className="w-60 h-24 mb-16" src={logo} />
 
-        <h1 className="text-3xl mb-8">
+        <h1 className="text-3xl mb-12">
           Let AI Recommend You The Product You Need
         </h1>
         <p className="flex items-center text-lg mb-2">
@@ -107,7 +107,7 @@ const Dashboard = () => {
           Strategic Business Development Director
         </p>
       </div>
-      <div className="w-2/3 bg-white p-10">
+      <div className="w-full md:w-2/3 bg-white p-10">
         {showForm ? (
           <form className="w-full max-w-3xl">
             <div className="flex flex-wrap -mx-3 mb-6">
