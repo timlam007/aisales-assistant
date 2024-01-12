@@ -72,6 +72,20 @@ const Dashboard = () => {
     setShowForm(!showForm);
   };
 
+  const [selectedSpecialHealthConcern, setSelectedSpecialHealthConcern] =
+    useState("");
+  const [otherHealthConcern, setOtherHealthConcern] = useState("");
+
+  const healthConcernsOptions = [
+    "High Cholesterol",
+    "Diabetes",
+    "Hypertension",
+    "Chronic Illnesses",
+    "Allergies",
+    "Disabilities",
+    "Other",
+  ];
+
   return (
     <div className="flex min-h-screen">
       <div className="w-1/3 bg-blue-900 p-10 text-white flex flex-col justify-center">
@@ -170,18 +184,35 @@ const Dashboard = () => {
                   htmlFor="special-health-concerns"
                 >
                   Special Health Concerns{" "}
-                  <span className="text-gray-400">
-                    (For example: High Cholesterol, Diabetes, Hypertension,
-                    chronic illnesses, allergies, or disabilities , etc.) Please
-                    list any that apply.
-                  </span>
                 </label>
-                <input
-                  className="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="special-health-concerns"
-                  type="text"
-                  placeholder="None"
-                />
+                <div className="relative">
+                  <select
+                    className="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="special-health-concerns"
+                    value={selectedSpecialHealthConcern}
+                    onChange={(e) => {
+                      setSelectedSpecialHealthConcern(e.target.value);
+                      // Reset otherHealthConcern when a new option is selected
+                      setOtherHealthConcern("");
+                    }}
+                  >
+                    <option value="">Select</option>
+                    {healthConcernsOptions.map((concern) => (
+                      <option key={concern} value={concern}>
+                        {concern}
+                      </option>
+                    ))}
+                  </select>
+                  {selectedSpecialHealthConcern === "Other" && (
+                    <input
+                      type="text"
+                      placeholder="Specify other health concern"
+                      className="block w-full mt-2 p-2 border border-gray-200 rounded focus:outline-none focus:border-gray-500"
+                      value={otherHealthConcern}
+                      onChange={(e) => setOtherHealthConcern(e.target.value)}
+                    />
+                  )}
+                </div>
               </div>
               <div className="w-full md:w-1/2 px-3">
                 <label
