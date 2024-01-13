@@ -86,6 +86,8 @@ const Dashboard = () => {
     "Other",
   ];
 
+  const [allowSocialMediaSearch, setAllowSocialMediaSearch] = useState(false);
+
   return (
     <div className="md:flex min-h-screen">
       <div className="w-full md:w-1/3 bg-blue-900 p-10 text-white flex flex-col justify-center">
@@ -137,6 +139,39 @@ const Dashboard = () => {
                   id="occupation"
                   type="text"
                   placeholder="Software Engineer"
+                />
+              </div>
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  htmlFor="email"
+                >
+                  Email
+                </label>
+                <input
+                  className="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="email"
+                  type="email"
+                  placeholder="janedoe@gmail.com"
+                />
+              </div>
+              <div className="flex items-center gap-2 w-full md:w-1/2 px-3">
+                <label
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold "
+                  htmlFor="allowSocialMediaSearch"
+                >
+                  Allow to search social media
+                </label>
+                <input
+                  className="py-3 px-4"
+                  id="allowSocialMediaSearch"
+                  type="checkbox"
+                  checked={allowSocialMediaSearch}
+                  onChange={() =>
+                    setAllowSocialMediaSearch(!allowSocialMediaSearch)
+                  }
                 />
               </div>
             </div>
