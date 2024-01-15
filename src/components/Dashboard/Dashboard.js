@@ -176,7 +176,7 @@ const Dashboard = () => {
                   placeholder="janedoe@gmail.com"
                 />
               </div>
-              <div className="flex items-center gap-2 w-full md:w-1/2 px-3">
+              {/* <div className="flex items-center gap-2 w-full md:w-1/2 px-3">
                 <label
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold "
                   htmlFor="allowSocialMediaSearch"
@@ -192,7 +192,7 @@ const Dashboard = () => {
                     setAllowSocialMediaSearch(!allowSocialMediaSearch)
                   }
                 />
-              </div>
+              </div> */}
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
