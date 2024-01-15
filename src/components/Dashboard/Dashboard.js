@@ -7,7 +7,7 @@ import logo from "../../assets/app_logo.png";
 import product1 from "../../assets/product1.jpeg";
 import product2 from "../../assets/product2.jpeg";
 import product3 from "../../assets/product3.jpeg";
-const Result = () => {
+const Result = ({ onHomeButtonClick }) => {
   const products = [
     {
       name: "ManuGuard Medical Plan/Benefit",
@@ -22,30 +22,45 @@ const Result = () => {
       image: product3,
     },
   ];
+
+  const handleHomeButtonClick = () => {
+    if (onHomeButtonClick) {
+      onHomeButtonClick(); // Call the onHomeButtonClick prop
+    }
+  };
+
   return (
-    <div className="grid grid-cols-3 gap-4">
-      {products.map((product, index) => (
-        <div
-          key={index}
-          className="p-4 rounded-lg flex flex-col items-center justify-between"
-        >
-          <img
-            className="w-full h-40 mb-1"
-            src={product.image} // Use the image from the product object
-            alt={`Placeholder image for insurance plan ${index + 1}`}
-          />
-          <div className="text-center">
-            <h3 className="text-lg font-semibold">{product.name}</h3>
-            <p className="mb-4">
-              Ext ${Math.floor(Math.random(0, 1) * 1000)}+ per/y
-            </p>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
-              View More
-            </button>
+    <>
+      <button
+        onClick={handleHomeButtonClick}
+        className="bg-green-900 rounded-md text-white px-4 py-2"
+      >
+        Home
+      </button>
+      <div className="grid grid-cols-3 gap-4">
+        {products.map((product, index) => (
+          <div
+            key={index}
+            className="p-4 rounded-lg flex flex-col items-center justify-between"
+          >
+            <img
+              className="w-full h-40 mb-1"
+              src={product.image} // Use the image from the product object
+              alt={`Placeholder image for insurance plan ${index + 1}`}
+            />
+            <div className="text-center">
+              <h3 className="text-lg font-semibold">{product.name}</h3>
+              <p className="mb-4">
+                Ext ${Math.floor(Math.random(0, 1) * 1000)}+ per/y
+              </p>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                View More
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 
@@ -87,6 +102,10 @@ const Dashboard = () => {
   ];
 
   const [allowSocialMediaSearch, setAllowSocialMediaSearch] = useState(false);
+
+  const handleHomeButtonClick = () => {
+    setShowForm(true); // Set showForm to true to render the form component
+  };
 
   return (
     <div className="md:flex min-h-screen">
@@ -336,7 +355,7 @@ const Dashboard = () => {
             </button>
           </form>
         ) : (
-          <Result />
+          <Result onHomeButtonClick={handleHomeButtonClick}/>
         )}
       </div>
     </div>
