@@ -7,6 +7,8 @@ import logo from "../../assets/app_logo.png";
 import product1 from "../../assets/product1.jpeg";
 import product2 from "../../assets/product2.jpeg";
 import product3 from "../../assets/product3.jpeg";
+import Select from "react-select";
+
 const Result = ({ onHomeButtonClick }) => {
   const products = [
     {
@@ -104,8 +106,52 @@ const Dashboard = () => {
   // const [allowSocialMediaSearch, setAllowSocialMediaSearch] = useState(false);
 
   const [selectedHealthStatus, setSelectedHealthStatus] = useState("");
-
   const healthStatus = ["Excellent", "Good", "Fair", "Poor", "Unknown"];
+
+  const hobbiesList = [
+    { value: "Outdoor and Adventure Sports (Like hiking, mountain biking, skiing)", label: "Outdoor and Adventure Sports (Like hiking, mountain biking, skiing)" },
+    { value: "Driving or Racing (car, montorcycles, boats)", label: "Driving or Racing (car, montorcycles, boats)" },
+    { value: "Flying or Aerial Sports (Like piloting, skydiving)", label: "Flying or Aerial Sports (Like piloting, skydiving)" },
+    { value: "Water Sports (Like scuba diving, sailing)", label: "Water Sports (Like scuba diving, sailing)" },
+    { value: "Artistic and Creative Activities (Like photography, painting)", label: "Artistic and Creative Activities (Like photography, painting)" },
+    { value: "Collecting (such as antiques, coins, stamps)", label: "Collecting (such as antiques, coins, stamps)" },
+    { value: "Fitness and Exercise (Like gym, yoga , Pilates)", label: "Fitness and Exercise (Like gym, yoga , Pilates)" },
+    { value: "Martial Arts (Like Boxing , KungFu, Muay Thai, Whshu)", label: "Martial Arts (Like Boxing , KungFu, Muay Thai, Whshu)" },
+    { value: "Team and Racket Sport (Like Tennis, Badminton, Hockey, Table-Tennis, Soccer, Rugby)", label: "Team and Racket Sport (Like Tennis, Badminton, Hockey, Table-Tennis, Soccer, Rugby)" },
+    { value: "Others", label: "Others" }
+  ];
+  
+  const [selectedHobbies, setSelectedHobbies] = React.useState([]);
+
+  const handleHobbyChange = (selectedOptions) => {
+    setSelectedHobbies(selectedOptions);
+  };
+
+  // const hobbiesList = [
+  //   "Outdoor and Adventure Sports (Like hiking, mountain biking, skiing)",
+  //   "Driving or Racing (car, montorcycles, boats)",
+  //   "Flying or Aerial Sports (Like piloting, skydiving)",
+  //   "Water Sports (Like scuba diving, sailing)",
+  //   "Artistic and Creative Activities (Like photography, painting)",
+  //   "Collecting (such as antiques, coins, stamps)",
+  //   "Fitness and Exercise (Like gym, yoga , Pilates)",
+  //   "Martial Arts (Like Boxing , KungFu, Muay Thai, Whshu)",
+  //   "Team and Racket Sport (Like Tennis, Badminton, Hockey, Table-Tennis, Soccer, Rugby)",
+  //   "Others"
+  // ];
+  // const [selectedHobbies, setSelectedHobbies] = useState([]);
+  // const handleHobbyChange = (hobby) => {
+  //   // Check if the hobby is already selected
+  //   if (selectedHobbies.includes(hobby)) {
+  //     // If selected, remove it from the list
+  //     setSelectedHobbies((prevSelected) =>
+  //       prevSelected.filter((selected) => selected !== hobby)
+  //     );
+  //   } else {
+  //     // If not selected, add it to the list
+  //     setSelectedHobbies((prevSelected) => [...prevSelected, hobby]);
+  //   }
+  // };
 
   const handleHomeButtonClick = () => {
     setShowForm(true); // Set showForm to true to render the form component
@@ -301,19 +347,19 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="w-full md:w-1/2 px-3">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="hobby"
-                >
-                  Hobby
-                </label>
-                <input
-                  className="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="hobby"
-                  type="text"
-                  placeholder="Reading"
-                />
-              </div>
+      <label
+        className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        htmlFor="hobby"
+      >
+        Hobbies
+      </label>
+      <Select
+        isMulti
+        options={hobbiesList}
+        value={selectedHobbies}
+        onChange={handleHobbyChange}
+      />
+    </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -341,7 +387,6 @@ const Dashboard = () => {
                   </label>
                 </div>
               </div>
-  
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full px-3">
