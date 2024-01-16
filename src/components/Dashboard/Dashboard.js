@@ -101,7 +101,11 @@ const Dashboard = () => {
     "Other",
   ];
 
-  const [allowSocialMediaSearch, setAllowSocialMediaSearch] = useState(false);
+  // const [allowSocialMediaSearch, setAllowSocialMediaSearch] = useState(false);
+
+  const [selectedHealthStatus, setSelectedHealthStatus] = useState("");
+
+  const healthStatus = ["Excellent", "Good", "Fair", "Poor", "Unknown"];
 
   const handleHomeButtonClick = () => {
     setShowForm(true); // Set showForm to true to render the form component
@@ -193,22 +197,6 @@ const Dashboard = () => {
                   }
                 />
               </div> */}
-            </div>
-            <div className="flex flex-wrap -mx-3 mb-6">
-              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="health-status"
-                >
-                  Health Status (Optional)
-                </label>
-                <input
-                  className="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="health-status"
-                  type="text"
-                  placeholder="Good"
-                />
-              </div>
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -226,6 +214,50 @@ const Dashboard = () => {
                   {ageRanges.map((range) => (
                     <option key={range} value={range}>
                       {range}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  htmlFor="healthStatus"
+                >
+                  Health Status
+                </label>
+                <select
+                  className="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="healthStatus"
+                  value={selectedHealthStatus}
+                  onChange={(e) => setSelectedHealthStatus(e.target.value)}
+                >
+                  <option value="">Select</option>
+                  {healthStatus.map((range) => (
+                    <option key={range} value={range}>
+                      {range}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  htmlFor="civil-status"
+                >
+                  Civil Status
+                </label>
+                <select
+                  className="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="civil-status"
+                  value={selectedCivilStatus}
+                  onChange={(e) => setSelectedCivilStatus(e.target.value)}
+                >
+                  <option value="">Select</option>
+                  {civilStatusOptions.map((status) => (
+                    <option key={status} value={status}>
+                      {status}
                     </option>
                   ))}
                 </select>
@@ -271,23 +303,16 @@ const Dashboard = () => {
               <div className="w-full md:w-1/2 px-3">
                 <label
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="civil-status"
+                  htmlFor="hobby"
                 >
-                  Civil Status
+                  Hobby
                 </label>
-                <select
-                  className="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="civil-status"
-                  value={selectedCivilStatus}
-                  onChange={(e) => setSelectedCivilStatus(e.target.value)}
-                >
-                  <option value="">Select</option>
-                  {civilStatusOptions.map((status) => (
-                    <option key={status} value={status}>
-                      {status}
-                    </option>
-                  ))}
-                </select>
+                <input
+                  className="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="hobby"
+                  type="text"
+                  placeholder="Reading"
+                />
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -316,20 +341,7 @@ const Dashboard = () => {
                   </label>
                 </div>
               </div>
-              <div className="w-full md:w-1/2 px-3">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="hobby"
-                >
-                  Hobby
-                </label>
-                <input
-                  className="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="hobby"
-                  type="text"
-                  placeholder="Reading"
-                />
-              </div>
+  
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full px-3">
@@ -355,7 +367,7 @@ const Dashboard = () => {
             </button>
           </form>
         ) : (
-          <Result onHomeButtonClick={handleHomeButtonClick}/>
+          <Result onHomeButtonClick={handleHomeButtonClick} />
         )}
       </div>
     </div>
