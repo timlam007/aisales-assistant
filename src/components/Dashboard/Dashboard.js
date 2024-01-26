@@ -103,7 +103,7 @@ const Dashboard = () => {
     "Other",
   ];
 
-  // const [allowSocialMediaSearch, setAllowSocialMediaSearch] = useState(false);
+  const [allowSocialMediaSearch, setAllowSocialMediaSearch] = useState(false);
 
   const [selectedHealthStatus, setSelectedHealthStatus] = useState("");
   const healthStatus = ["Excellent", "Good", "Fair", "Poor", "Unknown"];
@@ -257,23 +257,6 @@ const Dashboard = () => {
                   placeholder="janedoe@gmail.com"
                 />
               </div>
-              {/* <div className="flex items-center gap-2 w-full md:w-1/2 px-3">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold "
-                  htmlFor="allowSocialMediaSearch"
-                >
-                  Allow to search social media
-                </label>
-                <input
-                  className="py-3 px-4"
-                  id="allowSocialMediaSearch"
-                  type="checkbox"
-                  checked={allowSocialMediaSearch}
-                  onChange={() =>
-                    setAllowSocialMediaSearch(!allowSocialMediaSearch)
-                  }
-                />
-              </div> */}
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -417,6 +400,23 @@ const Dashboard = () => {
                     <span className="ml-2">Female</span>
                   </label>
                 </div>
+              </div>
+              <div className="flex items-center gap-2 w-full md:w-1/2 px-3">
+                <label
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold "
+                  htmlFor="allowSocialMediaSearch"
+                >
+                  Allow to search social media (Linkedin, Twitter and Instagram)
+                </label>
+                <input
+                  className="py-3 px-4"
+                  id="allowSocialMediaSearch"
+                  type="checkbox"
+                  checked={allowSocialMediaSearch}
+                  onChange={() =>
+                    setAllowSocialMediaSearch(!allowSocialMediaSearch)
+                  }
+                />
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
